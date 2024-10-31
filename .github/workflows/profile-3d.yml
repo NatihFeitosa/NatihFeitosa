@@ -11,20 +11,27 @@ jobs:
     name: generate-github-profile-3d-contrib
     steps:
       - uses: actions/checkout@v2
+      
       - uses: yoshi389111/github-profile-3d-contrib@0.6.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           USERNAME: ${{ github.repository_owner }}
+          
       - name: Commit & Push
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
           
           git add -A
+          # Verifica se há mudanças para commit
           if git diff-index --quiet HEAD; then
             echo "Sem alterações para commit"
           else
             git commit -m "generated"
-            git pull --rebase origin main
+            
+            # Faz pull com rebase para evitar conflitos
+            git pull --rebase origin main || { echo "Pull failed"; exit 1; }
+            
+            # Faz push das alterações
             git push "https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" HEAD:main
           fi
