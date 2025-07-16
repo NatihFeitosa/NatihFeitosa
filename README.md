@@ -32,7 +32,7 @@
 
 ###
 
-<p align="left">I'm Natih from Brazil<br><br>- 🔭 I’m working as student<br>- 📚 I'm currently learning Node.js<br>- ⚡ In my free time I play videogames</p>
+<p align="left">I'm Natih from Brazil<br><br>- 🔭 I’m working as student<br>- 📚 I'm currently learning FullStack with JS (Node.js and React)<br>- ⚡ In my free time I play videogames</p>
 
 ###
 
